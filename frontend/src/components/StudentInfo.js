@@ -145,7 +145,7 @@ const StudentInfo = () => {
               </tr>
             </thead>
             <tbody>
-              {(tutorList?.length > 0) &&  tutorList.map((t) => (
+              {(tutorList?.length > 0) && tutorList.map((t) => (
                 <tr>
                   <td>{t.course.subject.name}</td>
                   <td className="tutor-period">
@@ -182,7 +182,7 @@ const StudentInfo = () => {
               </tr>
             </thead>
             <tbody>
-              {courseList.map((c) => (
+              {(courseList?.length > 0) && courseList.map((c) => (
                 <tr>
                   <td>{c.id}</td>
                   <td>{c.subject.name}</td>
