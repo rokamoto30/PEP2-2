@@ -6,7 +6,6 @@ const userID = getSignedInUser().id
 const apiURL = baseURL + "/api/session"
 const apiURL2 = baseURL + "/api/session/" + userID
 const SessionApi = {
-
     addSession: (sessionToCreate) => {
         fetch(apiURL, {
             method: "POST",
@@ -42,8 +41,6 @@ const SessionApi = {
 
     getTutorSession: (setTutorList) => {
         const token = getAuthToken();
-        
-        console.log("My Token", token)
         fetch(apiURL2, {
             method: 'GET',
             headers: {
