@@ -145,8 +145,7 @@ const StudentInfo = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(tutorList)}
-              {tutorList.map((t) => (
+              {(tutorList?.length > 0) &&  tutorList.map((t) => (
                 <tr>
                   <td>{t.course.subject.name}</td>
                   <td className="tutor-period">

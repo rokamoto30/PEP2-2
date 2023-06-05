@@ -8,8 +8,6 @@ const apiURL2 = baseURL + "/api/session/" + userID
 const SessionApi = {
 
     addSession: (sessionToCreate) => {
-
-
         fetch(apiURL, {
             method: "POST",
             headers: {
@@ -26,7 +24,7 @@ const SessionApi = {
     },
     updateSession: (sessionToUpdate) => {
         const token = getAuthToken();
-        fetch( baseURL + `/api/session/rating/${sessionToUpdate.id}/${sessionToUpdate.rating}`, {
+        fetch(baseURL + `/api/session/rating/${sessionToUpdate.id}/${sessionToUpdate.rating}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
@@ -44,6 +42,8 @@ const SessionApi = {
 
     getTutorSession: (setTutorList) => {
         const token = getAuthToken();
+        
+        console.log("My Token", token)
         fetch(apiURL2, {
             method: 'GET',
             headers: {
