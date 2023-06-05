@@ -1,5 +1,6 @@
 import { getAuthToken } from "../Util/auth";
-const apiURL="http://localhost:8080/api/subject";
+import { baseURL } from './Api.js'
+const apiURL= baseURL + "/api/subject";
 const SubjectApi = {
 
     getSubjects:(setSubjectList)=>{

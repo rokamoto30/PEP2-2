@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import SignInApi from "../APIs/SignInApi";
 import './CSS/auth.css';
 
-const apiURL = "http://localhost:8080/authenticate";
+import { baseURL } from '../APIs/Api.js'
+const apiURL = baseURL + "/authenticate";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Auth = () => {
         return token
       })
       .then((token) => {
-        const apiURL2 = "http://localhost:8080/api/user/name/" + userName;
+        const apiURL2 = baseURL + "/api/user/name/" + userName;
         fetch(apiURL2, {
           method: "GET",
           headers: {
