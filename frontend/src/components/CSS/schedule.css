@@ -1,0 +1,39 @@
+.schedule-body {
+    display: flex;
+    flex-direction: column;
+}
+.schedule-title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 1050px) { 
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .inner-wrapper {
+        width: 50%;
+    }
+    .first {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .second {
+        margin-top: 2rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+    .close-button, .submit-button {
+        width: 100%;
+    }
+}

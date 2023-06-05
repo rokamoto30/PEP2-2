@@ -1,0 +1,17 @@
+@media (max-width: 1050px) { 
+    .signup-wrapper2 {
+        display: flex;
+        flex-direction: column;
+    }
+    .signup-form {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem;
+    }
+    .sign-up-button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

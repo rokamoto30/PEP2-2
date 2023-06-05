@@ -1,0 +1,212 @@
+body {
+  background-color: rgb(240, 240, 240);
+}
+
+h2,
+h3 {
+  text-align: center;
+  font-family: "Barlow", sans-serif;
+}
+h2,
+h3 {
+  color: #22a8c1;
+}
+h5 {
+  color: #89d99d;
+}
+th {
+  font-size: 15px;
+  color: #22a8c1;
+  font-family: "Barlow", sans-serif;
+  width: 150px;
+  padding: 10px;
+}
+button {
+  border: none;
+  background-color: transparent;
+}
+
+form {
+  margin-top: 20px;
+  width: 70%;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: white;
+  height: 150px;
+  width: 250px;
+  border-radius: 20px;
+  filter: drop-shadow(1px 1px 2px grey);
+}
+.login-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100vw;
+  align-items: center;
+}
+.container {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  background: url("images/Abstract_Geometric_Background_1.jpg") center;
+  height: 100%;
+  width: 40%;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+.signup-wrapper2 {
+  width: 100vw;
+  display: flex;
+  height: 30%;
+  font-size: 20px;
+  height: 100%;
+  background-size: cover;
+}
+
+.signup-form {
+  padding: 25px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.signup-form input {
+  margin-bottom: 25px;
+}
+
+.btn {
+  font-weight: 600;
+}
+
+.signup-wrapper p {
+  font-size: 20px;
+}
+.signup-wrapper .btn {
+  background-color: white;
+  width: 100%;
+}
+.signup-wrapper .btn:hover {
+  background-color: #89d99d;
+}
+
+.sign-up .btn {
+  background-color: white;
+}
+.sign-up .btn:hover {
+  background-color: #89d99d;
+}
+
+.signin {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  background-color: #89d99d;
+  width: 50%;
+  border-radius: 50px;
+}
+
+.signin input {
+  margin-bottom: 40px;
+}
+.signin h1,
+.signup-form h1 {
+  color: #89d99d;
+}
+.form-control {
+  border-radius: 50px;
+  background-color: gainsboro;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+.fa-magnifying-glass,
+.fa-person-chalkboard {
+  font-size: 60px;
+}
+.fa-pen-to-square {
+  color: #22a8c1;
+}
+.inner-wrapper {
+  height: 50vh;
+  background-color: white;
+
+  width: 25vw;
+  margin-right: 50px;
+  filter: drop-shadow(1px 1px 2px grey);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.links.btn {
+  background-color: transparent;
+}
+
+.inner-wrapper .btn,
+.empty .btn {
+  background-color: #22a8c1;
+  color: white;
+  border-radius: 30px;
+  margin: 20px 0;
+}
+.empty .btn {
+  width: 60%;
+  margin: 0;
+}
+.fa-calendar-plus {
+  color: black;
+  font-size: 1.25em;
+}
+
+.inner-wrapper .btn:hover,
+.empty .btn:hover,
+.table .btn {
+  background-color: #22a8c1;
+  color: black;
+}
+
+.inner-wrapper p {
+  text-align: center;
+  width: 70%;
+}
+
+.form {
+  margin: 0px auto;
+  padding: 20px;
+  border-radius: 20px;
+  width: 30vw;
+  filter: drop-shadow(5px 3px 12px grey);
+}
+
+.modal-content .form-label {
+  color: white;
+}
+.modal-content {
+  background: url("images/Abstract_Geometric_Background_1.jpg") center;
+}
+.table-div {
+  margin: auto;
+  width: 900px;
+  max-height: 500px;
+  overflow-y: auto;
+}

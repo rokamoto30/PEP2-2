@@ -1,0 +1,19 @@
+@media (max-width: 1050px) { 
+    .login-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .signin {
+        margin-top: 1rem;
+    }
+    .sign-in-button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sign-up {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}

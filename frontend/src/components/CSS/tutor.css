@@ -1,0 +1,7 @@
+
+@media (max-width: 1050px) { 
+    .table-div {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+}

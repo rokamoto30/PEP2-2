@@ -1,0 +1,125 @@
+.home-navigation-div {
+    position: absolute;
+    right: 5rem;
+}
+.home-logo {
+    margin-left: 5rem;
+}
+.home-vertical-line {
+    position: absolute;
+    margin-left: 5.5rem;
+    left: 0;
+    top: 2.5rem;
+    width: 4.5%;
+    rotate: 90deg;
+    border: none;
+    border-top: 3px solid black; /* change this value to set the thickness */
+}
+.home-top-line, .home-bottom-line {
+    margin-left: 2.5rem;
+    color: black;
+    border: none;
+    left: 0;
+    border-top: 3px solid black; /* change this value to set the thickness */
+}
+.home-body {
+    margin-top: 10rem;
+}
+.hr-title {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+}
+.body-text {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    width: 60%;
+    font-size: 22px;
+}
+.started {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3rem;
+    border: black solid 3px;
+    width: fit-content;
+    padding: 15px 50px;
+}
+.get-started {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    text-decoration: none;
+    color: black;
+}
+.get-started:hover {
+    opacity: 30%;
+    cursor: pointer;
+}
+.left-div {
+    width: 50%;
+}
+.right-div {
+    margin-left: 3rem;
+}
+.tutoring {
+    width: 600px;
+}
+@media (max-width: 1050px) {
+    .header {
+        margin-bottom: 5rem;
+    }
+    .whole-body {
+        display: flex;
+        flex-direction: column;
+    }
+    .home-logo {
+        margin-left: 0;
+    }
+    .home-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    .left-div {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+    }
+    .body-text {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+        margin-top: 1rem;
+    }
+    .started {
+        padding: 7.5px 25px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .get-started {
+        font-size: 24px;
+    }
+    .right-div {
+       display: block;
+       margin-right: auto;
+       margin-left: auto;
+    }
+    .tutoring {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 250px;
+    }
+    .home-vertical-line {
+        margin-left: 0;
+        width: 15%;
+    }
+}

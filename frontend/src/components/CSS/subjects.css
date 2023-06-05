@@ -1,0 +1,10 @@
+@media (max-width: 1050px) { 
+    .table-div {
+        width: 100%;
+        max-height: 600px;
+        overflow-y: auto;
+    }
+    .id-column {
+        width: 25px;
+    }
+}

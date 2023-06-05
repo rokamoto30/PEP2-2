@@ -1,0 +1,120 @@
+.welcome-username {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.student-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.left-side {
+    width: 100%;
+    margin-bottom: 5rem;
+}
+.enrolled-sessions-title {
+    font-size: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tutoring-sessions-title {
+    font-size: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tutoring-hr {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    color: black;
+    width: 50%;
+    line-height: 0;
+}
+.right-side {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.courses-offer-title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+th {
+    border: solid black 2px;
+}
+tr {
+    border: solid black 2px;
+}
+td {   
+    border: solid black 2px;
+    font-size: 12px;
+}
+.time-period {
+    font-size: 13px;
+    text-align: center;
+    width: 500px;
+}
+.tutor-period {
+    width: 1000px;
+}
+.enrolled-sessions-table, .tutoring-sessions-table, .courses-offered-table {
+    max-height: 500px;
+    overflow-y: auto;
+}
+.student-top-nav {
+    display: none;
+}
+.period-content{
+    width: fit-content;
+}
+td{
+    width: fit-content;
+}
+@media (max-width: 1050px) { 
+    .student-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .right-side {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        margin-bottom: 5rem;
+    }
+    .close-button, .submit-button {
+        width: 100%;
+    }
+    .enrolled-sessions-table, .tutoring-sessions-table, .courses-offered-table {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+    .student-top-nav {
+        display: block;
+        margin-bottom: 1rem;
+        text-align: center;
+        padding: 25px 0;
+        border: solid black 3px;
+        background-color: antiquewhite;
+    }
+    .student-top-links {
+        margin-left: 1rem;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .selection-header {
+        color: black;
+        font-weight: bold;
+    }
+    .selection-hr {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}
