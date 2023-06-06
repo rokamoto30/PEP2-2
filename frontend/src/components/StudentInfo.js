@@ -38,12 +38,19 @@ const StudentInfo = () => {
   };
 
   const handleSubmit2 = (event) => {
+    event.preventDefault()
+    if (rating < 0 || rating > 5) {
+      alert("Invalid rating. Value must be between 0 and 5.")
+      return
+    }
+
     const session = {
       id: sessionID,
       rating: rating
     }
 
     SessionApi.updateSession(session)
+    window.location.href = '/student'
   };
   useEffect(() => {
     setUserID(parseInt(getSignedInUser().id));
