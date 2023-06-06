@@ -28,6 +28,7 @@ public class Session implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable=false) 
 	private Integer id;
 
 	@ManyToOne
@@ -40,9 +41,12 @@ public class Session implements Serializable {
 	@JoinColumn( name = "user_id", referencedColumnName = "id")
 	@Schema(description="linked user to act as the student")
 	private User user;
+
 	@Schema(description="start time", example=" [2023, 4, 9, 17, 33]")
+	@Column(nullable=false)
 	private LocalDateTime start;
 	@Schema(description="end time", example=" [2023, 4, 9, 17, 33]")
+	@Column(nullable=false)
 	private LocalDateTime end;
 	
 	@Min(value=0)
@@ -51,6 +55,7 @@ public class Session implements Serializable {
 	private Double rating;
 	
 	@Schema(description="cost")
+	@Min(value=0)
 	private Double cost;
 	
 	public Session () {}

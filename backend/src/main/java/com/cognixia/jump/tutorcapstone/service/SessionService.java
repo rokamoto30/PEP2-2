@@ -1,11 +1,13 @@
 package com.cognixia.jump.tutorcapstone.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cognixia.jump.tutorcapstone.exception.InvalidException;
 import com.cognixia.jump.tutorcapstone.exception.ResourceNotFoundException;
 import com.cognixia.jump.tutorcapstone.model.Session;
 import com.cognixia.jump.tutorcapstone.repository.SessionRepo;
@@ -24,9 +26,15 @@ public class SessionService {
     	return found.get();
     }
 
-    public Session createSession(Session session){
+    public Session createSession(Session session) throws InvalidException {
 
         session.setId(null); 
+        if (session.getEnd().isBefore( session.getStart() )) {
+            throw new InvalidException("start time must be before end time");
+        }
+        if (session.getStart().isBefore(LocalDateTime.now())) {
+            throw new InvalidException("start time is too soon");
+        }
         Session created = repo.save(session);
         return created;
     }

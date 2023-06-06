@@ -24,16 +24,19 @@ public class Course implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable=false)
 	private Integer id;
 	
 	@ManyToOne
 	@JoinColumn( name = "subject_id", referencedColumnName = "id")
 	@Schema(description="linked subject for this course")
+	@Column(nullable=false)
 	private Subject subject;
 	
 	@ManyToOne
 	@JoinColumn( name = "user_id", referencedColumnName = "id")
 	@Schema(description="linked user who will act as the tutor for this course")
+	@Column(nullable=false)
 	private User tutor;
 	
 	@JsonIgnore
@@ -42,9 +45,11 @@ public class Course implements Serializable {
 	private List<Session> sessions;
 	
 	@Schema(description="String to describe avalibility", example="7:00am-5:00pm central Monday-Friday")
+	@Column(nullable=false)
 	private String availability;
 	
 	@Schema(description="Double to describe hourly rate", example="20.00")
+	@Column(nullable=false)
 	private Double hourly;
 	
 	public Course() {

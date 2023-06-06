@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cognixia.jump.tutorcapstone.exception.InvalidException;
 import com.cognixia.jump.tutorcapstone.exception.ResourceNotFoundException;
 import com.cognixia.jump.tutorcapstone.model.Session;
 import com.cognixia.jump.tutorcapstone.service.SessionService;
@@ -30,7 +31,7 @@ public class SessionController {
 
     @PostMapping("/session")
     @Operation(summary="create a session")
-	public ResponseEntity<?> createUser(@Valid @RequestBody Session session) {
+	public ResponseEntity<?> createUser(@Valid @RequestBody Session session) throws InvalidException {
 		
 		Session created = service.createSession(session);
 		
