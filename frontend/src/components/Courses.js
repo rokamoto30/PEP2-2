@@ -12,14 +12,17 @@ const Courses = () => {
   const [userID, setUserID] = useState(0)
   const navigate = useNavigate()
   console.log(courseList);
+
+  const isValidDatePair = () => {
+    const startDate = new Date(starttime)
+    const endDate = new Date(endtime)
+    return startDate < endDate && startDate > new Date()
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    const startDate = new Date(starttime)
-    const endDate = new Date(endtime)
-    console.log("Time:", endDate - startDate)
-
-    if (startDate >= endDate || startDate < new Date()) {
+    if (!isValidDatePair()) {
       alert("Invalid date(s)")
       return
     }
@@ -32,7 +35,7 @@ const Courses = () => {
     }
     console.log(session)
     SessionApi.addSession(session)
-    window.location.href = '/student'
+    navigate('/student')
   }
 
   useEffect(() => {
@@ -93,7 +96,10 @@ const Courses = () => {
                     <input id="start-time" type="datetime-local" className="form-control" value={starttime} onChange={(event) => setStartTime(event.target.value)} required></input>
                     <label className="form-label mt-3">End Time</label>
                     <input id="end-time"type="datetime-local" className="form-control" value={endtime} onChange={(event) => setEndTime(event.target.value)} required></input>
-                    <button className="btn mt-3">Submit</button>
+                    <button
+                      className="btn mt-3"
+                      data-bs-dismiss={isValidDatePair() ? "modal": ""}
+                    >Submit</button>
                   </form>
                 </div>
               </div>

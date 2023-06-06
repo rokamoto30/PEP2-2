@@ -23,7 +23,7 @@ const StudentInfo = () => {
   const [rating, setRating] = useState(-1);
   const user = getSignedInUser();
   const username = user.username;
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const course = {
       id: CourseID,
@@ -33,13 +33,18 @@ const StudentInfo = () => {
       availability: Availability,
     };
     console.log(course);
-    CourseApi.updateCourse(course).then(() => {
-      CourseApi.getCourseByUser(setCourseList);
-    });
+    
+    await CourseApi.updateCourse(course)
+    await CourseApi.getCourseByUser(setCourseList)
+    setShouldRefresh(true)
   };
 
   const isValidRating = () => {
     return rating >= 0 && rating <= 5
+  }
+
+  const isValidRate = () => {
+    return Hourly > 0
   }
 
   const handleSubmit2 = (event) => {
@@ -64,7 +69,7 @@ const StudentInfo = () => {
     CourseApi.getCourseByUser(setCourseList);
     SessionApi.getTutorSession(setTutorList);
     setShouldRefresh(false)
-  }, [rating, shouldRefresh]);
+  }, [rating, shouldRefresh, Hourly, Availability]);
   return (
     <>
       <h2 className="welcome-username"> Welcome to your home {username}! </h2>
@@ -274,7 +279,11 @@ const StudentInfo = () => {
                     ></input>
                   </div>
                   <div className="modal-footer">
-                    <input type="submit" className="btn submit-button" value="Submit"></input>
+                  <button 
+                      type="submit"
+                      className="btn submit-button"
+                      data-bs-dismiss={isValidRate() && Availability ? "modal": ""}
+                    >Submit</button>
                     <button
                       type="button"
                       className="btn close-button"
@@ -285,7 +294,6 @@ const StudentInfo = () => {
                   </div>
                 </form>
               </div>
-
 
             </div>
           </div>
@@ -321,10 +329,10 @@ const StudentInfo = () => {
                       setRating(Number(event.target.value))
                     }} required></input>
                     <div className="modal-footer">
-                      <button 
-                        type="submit" 
-                        className="btn" 
-                        data-bs-dismiss={isValidRating() ? "modal": ""}
+                      <button
+                        type="submit"
+                        className="btn"
+                        data-bs-dismiss={isValidRating() ? "modal" : ""}
                       >Submit</button>
                       <button
                         type="button"

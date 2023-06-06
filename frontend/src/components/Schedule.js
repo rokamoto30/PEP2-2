@@ -6,6 +6,7 @@ import SubjectApi from "../APIs/SubjectApi";
 import { getSignedInUser } from "../Util/auth";
 import './CSS/schedule.css';
 const Schedule = () => {
+  const navigate = useNavigate()
   const [SubjectID, setSubjectID] = useState(1);
   const [subjectList, setSubjectList] = useState([]);
   const [Availability, setAvailability] = useState("");
@@ -21,13 +22,17 @@ const Schedule = () => {
     }
     console.log(course)
     CourseApi.addCourse(course)
-    window.location.href = "/student"
-
+    navigate("/student")
   };
+
+  const isValidRate = () => {
+    return Hourly > 0
+  }
+
   useEffect(() => {
     SubjectApi.getSubjects(setSubjectList);
     setUserID(getSignedInUser().id)
-  }, []);
+  }, [Hourly, Availability]);
 
   return (
     <section className="schedule-body">
@@ -90,9 +95,8 @@ const Schedule = () => {
                       required
                       min="0"
                       step="0.01"
-                      value={Hourly}
                       onChange={(event) => {
-                        setHourly(event.target.value);
+                        setHourly(Number(event.target.value));
                       }}
                     />
                   </div>
@@ -110,7 +114,11 @@ const Schedule = () => {
                     ></input>
                   </div>
                   <div className="modal-footer">
-                    <input type="submit" className="btn submit-button" value="Submit"></input>
+                    <button 
+                      type="submit"
+                      className="btn submit-button"
+                      data-bs-dismiss={isValidRate() && Availability ? "modal": ""}
+                    >Submit</button>
                     <button type="button" className="btn close-button" data-bs-dismiss="modal">Close</button>
                   </div>
                 </form>
