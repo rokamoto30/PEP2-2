@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const StudentInfo = () => {
+  const [shouldRefresh, setShouldRefresh] = useState(false)
   const [subjectList, setSubjectList] = useState([]);
   const [sessionList, setSessionList] = useState([]);
   const [courseList, setCourseList] = useState([]);
@@ -19,7 +20,7 @@ const StudentInfo = () => {
   const [SubjectID, setSubjectID] = useState(0);
   const [userID, setUserID] = useState(0);
   const [sessionID, setSessionID] = useState(0)
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(-1);
   const user = getSignedInUser();
   const username = user.username;
   const handleSubmit = (event) => {
@@ -37,9 +38,13 @@ const StudentInfo = () => {
     });
   };
 
+  const isValidRating = () => {
+    return rating >= 0 && rating <= 5
+  }
+
   const handleSubmit2 = (event) => {
     event.preventDefault()
-    if (rating < 0 || rating > 5) {
+    if (!isValidRating()) {
       alert("Invalid rating. Value must be between 0 and 5.")
       return
     }
@@ -50,14 +55,16 @@ const StudentInfo = () => {
     }
 
     SessionApi.updateSession(session)
-    window.location.href = '/student'
+    setShouldRefresh(true)
   };
+
   useEffect(() => {
     setUserID(parseInt(getSignedInUser().id));
     UserAPI.getStudentSession(setSessionList);
     CourseApi.getCourseByUser(setCourseList);
     SessionApi.getTutorSession(setTutorList);
-  }, []);
+    setShouldRefresh(false)
+  }, [rating, shouldRefresh]);
   return (
     <>
       <h2 className="welcome-username"> Welcome to your home {username}! </h2>
@@ -113,7 +120,7 @@ const StudentInfo = () => {
                           {s.end.join(":").substring(9)}
                         </td>
                         <td>{s.rating}</td>
-                        <td>${s.cost}</td>
+                        <td>${s.cost.toFixed(2)}</td>
                         <td>
                           <button
                             data-bs-toggle="modal"
@@ -310,11 +317,15 @@ const StudentInfo = () => {
                 <div className="row">
                   <form className="form" onSubmit={handleSubmit2}>
                     <label className="form-label">Rating</label>
-                    <input type="number" className="form-control" value={rating} onChange={(event) => {
-                      setRating(event.target.value)
-                    }}></input>
+                    <input type="number" className="form-control" onChange={(event) => {
+                      setRating(Number(event.target.value))
+                    }} required></input>
                     <div className="modal-footer">
-                      <input type="submit" className="btn" value="Submit"  ></input>
+                      <button 
+                        type="submit" 
+                        className="btn" 
+                        data-bs-dismiss={isValidRating() ? "modal": ""}
+                      >Submit</button>
                       <button
                         type="button"
                         className="btn"
