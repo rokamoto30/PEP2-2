@@ -30,13 +30,11 @@ public class Course implements Serializable {
 	@ManyToOne
 	@JoinColumn( name = "subject_id", referencedColumnName = "id")
 	@Schema(description="linked subject for this course")
-	@Column(nullable=false)
 	private Subject subject;
 	
 	@ManyToOne
 	@JoinColumn( name = "user_id", referencedColumnName = "id")
 	@Schema(description="linked user who will act as the tutor for this course")
-	@Column(nullable=false)
 	private User tutor;
 	
 	@JsonIgnore
