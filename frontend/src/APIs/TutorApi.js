@@ -1,9 +1,10 @@
 import { getAuthToken } from "../Util/auth";
-import { baseURL } from './Api.js'
-const apiURL= baseURL + "/api/user/tutors"
+import baseURLObject from './Api.js'
+
 const TutorApi = {
 
     getTutors:(setTutorList)=>{
+        const apiURL= baseURLObject.baseURL + "/api/user/tutors"
         const token=getAuthToken();
         // console.log('Bearer '+token)
         fetch(apiURL,{

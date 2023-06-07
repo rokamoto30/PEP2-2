@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const StudentInfo = () => {
+  const [shouldRefresh, setShouldRefresh] = useState(false)
   const [subjectList, setSubjectList] = useState([]);
   const [sessionList, setSessionList] = useState([]);
   const [courseList, setCourseList] = useState([]);
@@ -19,10 +20,10 @@ const StudentInfo = () => {
   const [SubjectID, setSubjectID] = useState(0);
   const [userID, setUserID] = useState(0);
   const [sessionID, setSessionID] = useState(0)
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(-1);
   const user = getSignedInUser();
   const username = user.username;
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const course = {
       id: CourseID,
@@ -32,25 +33,43 @@ const StudentInfo = () => {
       availability: Availability,
     };
     console.log(course);
-    CourseApi.updateCourse(course).then(() => {
-      CourseApi.getCourseByUser(setCourseList);
-    });
+    
+    await CourseApi.updateCourse(course)
+    await CourseApi.getCourseByUser(setCourseList)
+    setShouldRefresh(true)
   };
 
+  const isValidRating = () => {
+    return rating >= 0 && rating <= 5
+  }
+
+  const isValidRate = () => {
+    return Hourly > 0
+  }
+
   const handleSubmit2 = (event) => {
+    event.preventDefault()
+    if (!isValidRating()) {
+      alert("Invalid rating. Value must be between 0 and 5.")
+      return
+    }
+
     const session = {
       id: sessionID,
       rating: rating
     }
 
     SessionApi.updateSession(session)
+    setShouldRefresh(true)
   };
+
   useEffect(() => {
     setUserID(parseInt(getSignedInUser().id));
     UserAPI.getStudentSession(setSessionList);
     CourseApi.getCourseByUser(setCourseList);
     SessionApi.getTutorSession(setTutorList);
-  }, []);
+    setShouldRefresh(false)
+  }, [rating, shouldRefresh, Hourly, Availability]);
   return (
     <>
       <h2 className="welcome-username"> Welcome to your home {username}! </h2>
@@ -106,7 +125,7 @@ const StudentInfo = () => {
                           {s.end.join(":").substring(9)}
                         </td>
                         <td>{s.rating}</td>
-                        <td>${s.cost}</td>
+                        <td>${s.cost.toFixed(2)}</td>
                         <td>
                           <button
                             data-bs-toggle="modal"
@@ -260,7 +279,11 @@ const StudentInfo = () => {
                     ></input>
                   </div>
                   <div className="modal-footer">
-                    <input type="submit" className="btn submit-button" value="Submit"></input>
+                  <button 
+                      type="submit"
+                      className="btn submit-button"
+                      data-bs-dismiss={isValidRate() && Availability ? "modal": ""}
+                    >Submit</button>
                     <button
                       type="button"
                       className="btn close-button"
@@ -271,7 +294,6 @@ const StudentInfo = () => {
                   </div>
                 </form>
               </div>
-
 
             </div>
           </div>
@@ -303,11 +325,15 @@ const StudentInfo = () => {
                 <div className="row">
                   <form className="form" onSubmit={handleSubmit2}>
                     <label className="form-label">Rating</label>
-                    <input type="number" className="form-control" value={rating} onChange={(event) => {
-                      setRating(event.target.value)
-                    }}></input>
+                    <input type="number" className="form-control" onChange={(event) => {
+                      setRating(Number(event.target.value))
+                    }} required></input>
                     <div className="modal-footer">
-                      <input type="submit" className="btn" value="Submit"  ></input>
+                      <button
+                        type="submit"
+                        className="btn"
+                        data-bs-dismiss={isValidRating() ? "modal" : ""}
+                      >Submit</button>
                       <button
                         type="button"
                         className="btn"

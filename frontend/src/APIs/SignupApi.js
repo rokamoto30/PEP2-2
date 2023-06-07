@@ -1,12 +1,11 @@
 import { redirect } from "react-router-dom";
-import { baseURL } from './Api.js'
-const apiURL = baseURL + "/api/user";
-console.log(apiURL)
+import baseURLObject from './Api.js'
+
 
 const SignupApi = {
-
   createUser: (userToCreate, navigate) => {
    // const navigate = useNavigate();
+   const apiURL = baseURLObject.baseURL + "/api/user";
 
     fetch(apiURL, {
       method: "POST",

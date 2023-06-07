@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SignInApi from "../APIs/SignInApi";
 import './CSS/auth.css';
 
-import { baseURL } from '../APIs/Api.js'
-const apiURL = baseURL + "/authenticate";
+import baseURLObject from '../APIs/Api.js'
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -12,6 +11,8 @@ const Auth = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
+    const apiURL = baseURLObject.baseURL + "/authenticate";
+    console.log(apiURL)
     event.preventDefault();
     const login = {
       username: userName,
@@ -40,7 +41,7 @@ const Auth = () => {
         return token
       })
       .then((token) => {
-        const apiURL2 = baseURL + "/api/user/name/" + userName;
+        const apiURL2 = baseURLObject.baseURL + "/api/user/name/" + userName;
         fetch(apiURL2, {
           method: "GET",
           headers: {

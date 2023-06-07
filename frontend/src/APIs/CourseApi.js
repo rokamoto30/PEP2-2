@@ -1,13 +1,11 @@
 import { getAuthToken } from "../Util/auth";
 import { getSignedInUser } from "../Util/auth";
-import { baseURL } from './Api.js'
+import baseURLObject from './Api.js'
 const userID = getSignedInUser().id
-const apiURL1 = baseURL + "/api/course"
-const apiURL2 = baseURL + "/api/course/user_id/" + userID
-const apiURL3 = baseURL + "/api/course/update"
-const apiURL4 = baseURL + "/api/course/create"
+
 const CourseApi = {
     getCourses: (setCourseList) => {
+        const apiURL1 = baseURLObject.baseURL + "/api/course"
         const token = getAuthToken();
         fetch(apiURL1, {
             method: 'GET',
@@ -27,6 +25,7 @@ const CourseApi = {
     },
 
     getCourseByUser: (setCourseList) => {
+        const apiURL2 = baseURLObject.baseURL + "/api/course/user_id/" + userID
         const token = getAuthToken();
         fetch(apiURL2, {
             method: 'GET',
@@ -45,6 +44,7 @@ const CourseApi = {
         }).catch((error) => { console.log(error) });
     },
     addCourse: (courseToAdd) => {
+        const apiURL4 = baseURLObject.baseURL + "/api/course/create"
         const token = getAuthToken();
         fetch(apiURL4, {
             method: 'POST',
@@ -60,6 +60,7 @@ const CourseApi = {
             }).catch((error) => { console.log(error) })
     },
     updateCourse: (courseToUpdate) => {
+        const apiURL3 = baseURLObject.baseURL + "/api/course/update"
         const token = getAuthToken();
         fetch(apiURL3, {
             method: 'PUT',

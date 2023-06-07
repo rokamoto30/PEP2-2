@@ -1,9 +1,10 @@
 import { getAuthToken } from "../Util/auth";
-import { baseURL } from './Api.js'
-const apiURL= baseURL + "/api/subject";
+import baseURLObject from './Api.js'
+
 const SubjectApi = {
 
     getSubjects:(setSubjectList)=>{
+        const apiURL= baseURLObject.baseURL + "/api/subject";
         const token=getAuthToken();
         fetch(apiURL ,{
             method:'GET',

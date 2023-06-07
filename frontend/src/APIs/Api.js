@@ -1,1 +1,14 @@
-export const baseURL = "http://54.219.242.229:8080";
+const baseURLObject = {
+    baseURL: undefined
+}
+
+const fetchFromGithub = async (gitFileURL) => {
+    let response = await fetch(gitFileURL)
+    let fileData = await response.text()
+    baseURLObject.baseURL = fileData
+    return fileData
+}
+
+fetchFromGithub("https://raw.githubusercontent.com/rokamoto30/PEP2-2/master/frontend/src/APIs/automation/baseURL.txt")
+
+export default baseURLObject;
