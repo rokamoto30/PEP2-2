@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Courses from './components/Courses';
 
 import baseURLObject from './APIs/Api';
+import { useEffect } from 'react';
 
 function App() {
 
@@ -20,6 +21,10 @@ function App() {
   const showHeader = location.pathname !== '/auth'; // hide the header from the auth
   const showSignup = location.pathname !== '/signup'; // to hide the header from the signup
   const showHome = location.pathname !== '/';
+
+  useEffect(() => {
+    console.log("URL updated: "+ baseURLObject.baseURL)
+  }, [baseURLObject.baseURL])
   return (
     <div className='container'>
 
