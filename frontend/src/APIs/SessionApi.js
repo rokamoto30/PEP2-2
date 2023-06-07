@@ -1,12 +1,12 @@
 import { getAuthToken, getSignedInUser } from "../Util/auth"
 import { useEffect } from 'react'
-import { baseURL } from './Api.js'
+import baseURLObject from './Api.js'
 const token = getAuthToken()
 const userID = getSignedInUser().id
-const apiURL = baseURL + "/api/session"
-const apiURL2 = baseURL + "/api/session/" + userID
+
 const SessionApi = {
     addSession: (sessionToCreate) => {
+        const apiURL = baseURLObject.baseURL + "/api/session"
         fetch(apiURL, {
             method: "POST",
             headers: {
@@ -23,7 +23,7 @@ const SessionApi = {
     },
     updateSession: (sessionToUpdate) => {
         const token = getAuthToken();
-        fetch(baseURL + `/api/session/rating/${sessionToUpdate.id}/${sessionToUpdate.rating}`, {
+        fetch(baseURLObject.baseURL + `/api/session/rating/${sessionToUpdate.id}/${sessionToUpdate.rating}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
@@ -40,6 +40,7 @@ const SessionApi = {
     },
 
     getTutorSession: (setTutorList) => {
+        const apiURL2 = baseURLObject.baseURL + "/api/session/" + userID
         const token = getAuthToken();
         fetch(apiURL2, {
             method: 'GET',

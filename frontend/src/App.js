@@ -12,6 +12,8 @@ import StudentInfo from './components/StudentInfo';
 import Footer from './components/Footer';
 import Courses from './components/Courses';
 
+import baseURLObject from './APIs/Api';
+
 function App() {
 
   const location = useLocation(); // Created to hide headers

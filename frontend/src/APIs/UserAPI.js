@@ -1,13 +1,13 @@
 import { getAuthToken } from "../Util/auth";
 import { getSignedInUser } from "../Util/auth";
-import { baseURL } from './Api.js'
+import baseURLObject from './Api.js'
 
 
 const UserAPI={
     getStudentSession:(setStudentSessions)=>{
         const token=getAuthToken();
         const id=getSignedInUser().id;
-        const apiURL= baseURL + `/api/student/session/${id}` 
+        const apiURL= baseURLObject.baseURL + `/api/student/session/${id}` 
 fetch(apiURL,{
 method:"GET",
 headers:{

@@ -1,8 +1,8 @@
-import { baseURL } from './Api.js'
-const apiURL = baseURL + "/authenticate"
+import baseURLObject from './Api.js'
 
 const SignInApi = {
     validateCreds: (credsToValidate) => {
+        const apiURL = baseURLObject.baseURL + "/authenticate"
         fetch(apiURL, {
             method: "POST",
             headers: {
