@@ -14,6 +14,10 @@ const Courses = () => {
   console.log(courseList);
   const handleSubmit = (event) => {
     event.preventDefault()
+    // if (startTime > endTime || startTime < new Date()) {
+
+    // }
+    console.log(typeof endtime);
     const session = {
       "end": endtime,
       "start": starttime,

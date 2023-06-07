@@ -82,4 +82,8 @@ public class SessionController {
 							 .body("Session Deleted");
 	
 	}
+    @DeleteMapping("/session")
+    public void truncate() {
+    	service.truncate();
+    }
 }

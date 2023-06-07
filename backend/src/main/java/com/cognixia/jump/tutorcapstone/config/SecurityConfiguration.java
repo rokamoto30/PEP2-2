@@ -37,6 +37,8 @@ public class SecurityConfiguration {
         
         http.cors().and().csrf().disable()
         .authorizeRequests()
+//        .antMatchers(HttpMethod.DELETE,"/api/course").permitAll()
+//        .antMatchers(HttpMethod.DELETE,"/api/session").permitAll()
         .antMatchers("/authenticate").permitAll()
         .antMatchers("/api/course/**").hasRole("USER")
         .antMatchers("/api/session").hasRole("USER")
@@ -51,7 +53,8 @@ public class SecurityConfiguration {
         .antMatchers(HttpMethod.GET,"/api/user").hasRole("USER")
         .antMatchers(HttpMethod.GET,"/api/user/name/**").hasRole("USER")
         .antMatchers(HttpMethod.PUT,"/api/user").hasRole("USER")
-        .antMatchers(HttpMethod.DELETE,"/api/user").hasRole("USER")   
+        .antMatchers(HttpMethod.DELETE,"/api/user").hasRole("USER")
+        .antMatchers(HttpMethod.DELETE,"/api/course").permitAll()
         .antMatchers(HttpMethod.POST, "/api/user").permitAll() 
         .anyRequest().authenticated()
         .and()

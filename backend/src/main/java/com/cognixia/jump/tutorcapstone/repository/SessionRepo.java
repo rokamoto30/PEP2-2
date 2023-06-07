@@ -36,4 +36,9 @@ public interface SessionRepo extends JpaRepository<Session,Integer> {
 	@Query(value = "UPDATE session s SET s.rating = ?1 WHERE s.id = ?2", nativeQuery = true)
 	public int updateRating(Double rating, int id);
 	
+	@Modifying
+    @Transactional
+    @Query(value = "TRUNCATE TABLE session", nativeQuery = true)
+    void truncateTable();
+	
 }

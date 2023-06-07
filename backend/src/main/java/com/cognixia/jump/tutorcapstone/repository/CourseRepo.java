@@ -1,12 +1,15 @@
 package com.cognixia.jump.tutorcapstone.repository;
 
-import com.cognixia.jump.tutorcapstone.model.Course;
-
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.cognixia.jump.tutorcapstone.model.Course;
 
 @Repository
 public interface CourseRepo extends JpaRepository <Course,Integer> {
@@ -17,4 +20,14 @@ public interface CourseRepo extends JpaRepository <Course,Integer> {
 
 	@Query(value = "SELECT * FROM course c", nativeQuery = true)
 	public List<Course> findAll();
+	
+	@Modifying
+    @Transactional
+    @Query(value = "TRUNCATE TABLE course", nativeQuery = true)
+    void truncateTable();
+	
+	@Modifying
+    @Transactional
+    @Query(value="SET FOREIGN_KEY_CHECKS = ?1", nativeQuery=true)
+	public void toggleFK(boolean toggle);
 }

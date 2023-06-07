@@ -20,6 +20,11 @@ public class CourseController {
 	@Autowired
 	CourseService service;
 	
+	@DeleteMapping()
+	public void truncate() {
+		service.truncate();
+	}
+	
 	@GetMapping()
 	public List<Course> getCourse() {
 		return service.getCourses();

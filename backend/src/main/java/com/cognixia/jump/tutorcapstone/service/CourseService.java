@@ -7,13 +7,23 @@ import org.springframework.stereotype.Service;
 
 import com.cognixia.jump.tutorcapstone.exception.ResourceNotFoundException;
 import com.cognixia.jump.tutorcapstone.model.Course;
-import com.cognixia.jump.tutorcapstone.model.User;
 import com.cognixia.jump.tutorcapstone.repository.CourseRepo;
+import com.cognixia.jump.tutorcapstone.repository.SessionRepo;
 
 @Service
 public class CourseService {
 	@Autowired
 	CourseRepo repo; 
+	
+	@Autowired
+	SessionRepo sessionRepo;
+	
+	public void truncate() {
+		repo.toggleFK(false);
+		sessionRepo.truncateTable();
+		repo.truncateTable();
+		repo.toggleFK(true);
+	}
 	 
 	public Course createCourse(Course newCourse){
 		newCourse.setId(null);

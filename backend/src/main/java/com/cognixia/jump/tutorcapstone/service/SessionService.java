@@ -18,6 +18,9 @@ public class SessionService {
     @Autowired
     SessionRepo repo;
     
+    public void truncate() {
+    	repo.truncateTable();
+    }
     public Session getById(int id) throws ResourceNotFoundException {
     	Optional<Session> found = repo.findById(id);
     	if (found.isEmpty()) {
