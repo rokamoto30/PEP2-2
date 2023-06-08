@@ -1,8 +1,8 @@
 EC2 User: 
 root
-               Local time: Thu 2023-06-08 15:44:57 UTC
-           Universal time: Thu 2023-06-08 15:44:57 UTC
-                 RTC time: Thu 2023-06-08 15:44:57
+               Local time: Thu 2023-06-08 17:21:40 UTC
+           Universal time: Thu 2023-06-08 17:21:40 UTC
+                 RTC time: Thu 2023-06-08 17:21:40
                 Time zone: n/a (UTC, +0000)
 System clock synchronized: no
               NTP service: active
@@ -14,8 +14,7 @@ System clock synchronized: no
 Current Directory: 
 /home/ec2-user/PEP2-2/frontend/src/APIs/automation
 On branch master
-Your branch is ahead of 'origin/master' by 2 commits.
-  (use "git push" to publish your local commits)
+Your branch is up to date with 'origin/master'.
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
