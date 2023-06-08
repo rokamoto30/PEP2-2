@@ -1,8 +1,8 @@
 EC2 User: 
 root
-               Local time: Thu 2023-06-08 15:22:04 UTC
-           Universal time: Thu 2023-06-08 15:22:04 UTC
-                 RTC time: Thu 2023-06-08 15:22:04
+               Local time: Thu 2023-06-08 15:39:06 UTC
+           Universal time: Thu 2023-06-08 15:39:06 UTC
+                 RTC time: Thu 2023-06-08 15:39:07
                 Time zone: n/a (UTC, +0000)
 System clock synchronized: no
               NTP service: active
@@ -14,16 +14,14 @@ System clock synchronized: no
 Current Directory: 
 /home/ec2-user/PEP2-2/frontend/src/APIs/automation
 On branch master
-Your branch is up to date with 'origin/master'.
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
 	modified:   baseURL.txt
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	gitlog.txt
+	modified:   gitlog.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 
